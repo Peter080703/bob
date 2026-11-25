@@ -33,3 +33,21 @@ Follow [Conduit's guide](https://docs.conduit.xyz/guides/run-a-node/op-stack-nod
 
 - [BOB Mainnet](https://boltrpc.io/networks/bob)
 
+## Verify your RPC endpoint
+
+Use the [Chain.Love BOB API directory](https://bob.chain.love/toolbox/apis) to
+compare available hosted plans. Check your provider's documentation for the
+supported networks, request limits, and historical data your app needs.
+
+Before switching your app to a new endpoint, run this read-only check. Replace
+the example URL with the endpoint your app will use.
+
+```shell
+curl --fail-with-body --silent --show-error --max-time 10 \
+  -H 'Content-Type: application/json' \
+  --data '{"jsonrpc":"2.0","id":1,"method":"eth_chainId","params":[]}' \
+  https://rpc.gobob.xyz/
+```
+
+Expect `0xed88` (60808) for BOB Mainnet and `0xc576d` (808813) for BOB Sepolia.
+These chain IDs are listed on the [Networks page](../user-hub/networks.md).
